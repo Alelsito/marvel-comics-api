@@ -5,6 +5,7 @@
 const containerCards = document.querySelector("#containerCards");
 const form = document.querySelector("#searcher");
 
+// API DATA FOR RENDER
 const marvelData = {
   render: () => {
     const marvelAPI =
@@ -18,13 +19,18 @@ const marvelData = {
 
 marvelData.render();
 
+// RENDER CARDS
 const renderCards = (characters) => {
   containerCards.innerHTML = "";
   if (characters.size !== 0) {
     characters.forEach((character) => {
-      containerCards.innerHTML += `<div class="col-2 card mb-3">
+      containerCards.innerHTML += 
+          `<div class="col-2 card mb-3">
               <div class="title-card">
                   <span class="title">${character.name}</span>
+              </div>
+              <div class="id-card">
+                  <span class="id">${character.id}</span>
               </div>
               <img class="image" src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
               <div class="image-degradado"></div>
@@ -32,13 +38,18 @@ const renderCards = (characters) => {
                   <div class="emptybar"></div>
                   <div class="filledbar"></div>
               </div>
-          </div>`;
+          </div>`
     });
-} else {
-      console.log("No hay resulados")
+  } else {
+    containerCards.innerHTML +=`
+    <div class="col-8 error">
+      <span class="fs-1 d-flex justify-content-center">404</span> <br>
+      <span class="fs-4 d-flex justify-content-center">Ooops, character not found</span>
+    </div>`
   }
 };
 
+// SEARCH
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
   search(evt.target.character.value);
@@ -56,24 +67,25 @@ const search = (characterSearch) => {
 
       let unique = new Set([...characterName, ...characterId]);
       renderCards(unique);
-      console.log(unique)
+      console.log(unique);
     });
 };
 
+// -Filter by name
 const filterByName = (data, characterSearch) => {
-    let array = data.data.results;
-    let name = array.filter((character) => {
-        return character.name.toLowerCase().includes(characterSearch.toLowerCase());
-    })
-    return name;
+  let array = data.data.results;
+  let name = array.filter((character) => {
+    return character.name.toLowerCase().includes(characterSearch.toLowerCase());
+  });
+  return name;
 };
 
+// -Filter by id
 const filterById = (data, characterSearch) => {
-    let array = data.data.results;
-    let name = array.filter((character) => {
-        let id = String(character.id);
-        return id.includes(characterSearch);
-    })
-    return name;
+  let array = data.data.results;
+  let name = array.filter((character) => {
+    let id = String(character.id);
+    return id.includes(characterSearch);
+  });
+  return name;
 };
-

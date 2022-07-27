@@ -91,7 +91,7 @@
     position: relative;
     z-index: 1;
     margin-block-start: auto;
-    margin-bottom: 30px;
+    margin-bottom: 6px;
     margin-left: 8px;
 }
 
@@ -100,6 +100,22 @@
     font-weight: 500;
     font-size: 23px;
 }
+
+.id-card {
+    width: 150px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+    margin-left: 8px;
+}
+
+.id {
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 15px;
+}
+
 
 .image {
     position: absolute;
@@ -123,7 +139,7 @@
   
 .bar {
     position: absolute;
-    top: 250px;
+    top: 238px;
     left: 20px;
     height: 5px;
     width: 150px;
@@ -149,4 +165,10 @@
 .card:hover .filledbar {
     width: 120px;
     transition: 0.4s ease-out;
+}
+
+/* Error searcher */
+
+.error {
+    margin-left: -50px;
 }
