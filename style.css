@@ -1,5 +1,4 @@
 /* TOP */
-
 .main {
     position: absolute;
     margin-top: 10px;
@@ -33,9 +32,7 @@
     margin-top: 15px;
 }
 
-
 /* SEARCHER */
-
 .searcher {
     padding-top: 125px;
 }
@@ -55,7 +52,6 @@
 
 
 /* CHARACTERS CARDS*/
-
 .characterCard {
     position: relative;
     top: 50px;
@@ -116,7 +112,6 @@
     font-size: 15px;
 }
 
-
 .image {
     position: absolute;
     width: 185px;
@@ -135,7 +130,6 @@
     border-radius: 7px;
     background: linear-gradient(1deg, rgb(0 0 0)0%, rgb(0 0 0 / 65%) 30%, rgb(255 255 255 / 0%) 100%);
 }
-
   
 .bar {
     position: absolute;
@@ -167,14 +161,12 @@
     transition: 0.4s ease-out;
 }
 
-/* Error searcher */
-
+/* -Error searcher */
 .error {
     margin-left: -50px;
 }
 
 /* CHARACTER INFORMATION */
-
 .container-character {
     position: absolute;
     margin-top: 30px;
@@ -209,9 +201,7 @@
     color: white;
 }
 
-
 /* COMICS & SERIES CARDS*/
-
 .container-series-comics-cards {
     background-color: rgb(255, 255, 255);
     width: 100%;

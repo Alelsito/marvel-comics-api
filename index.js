@@ -2,6 +2,7 @@
 // import fetch from "node-fetch";
 
 // SELECTORs
+const reload = document.querySelector("#reload");
 const containerCards = document.querySelector("#containerCards");
 const form = document.querySelector("#searcher");
 const characterInformation = document.querySelector("#characterInformation");
@@ -12,9 +13,12 @@ const comicsCards = document.querySelector("#comics");
 const seriesTitle = document.querySelector("#seriesTitle");
 const seriesCards = document.querySelector("#series");
 
-// containerSeriesComicsCards.classList.add("container-visibility")
+// RELOAD
+reload.addEventListener("click", () => {
+  location.reload();
+});
 
-// API DATA FOR RENDER
+// API DATA FOR RENDER CARDS
 const marvelData = {
   render: () => {
     const marvelAPI =
@@ -30,11 +34,9 @@ marvelData.render();
 
 // RENDER CARDS
 const renderCards = (characters) => {
-  // console.log(characters)
   containerCards.innerHTML = "";
   if (characters.size !== 0) {
     characters.forEach((character) => {
-      // console.log(character)
       let card = document.createElement("div");
       let titleCard = document.createElement("div");
       let title = document.createElement("span");
@@ -90,13 +92,12 @@ const renderCards = (characters) => {
   }
 };
 
-// EVENT LISTENER SEARCH
+// ------------
 
+// EVENT LISTENER SEARCH
 const eventListenerSearch = (e) => {
   const marvelAPI = `http://gateway.marvel.com/v1/public/characters/${e}?ts=2022&apikey=4af096836a1b7a7c3b2658feeec3ae3a&hash=0725b34b13436807e63352ce699e265f`;
-
   const marvelComicsAPI = `http://gateway.marvel.com/v1/public/characters/${e}/comics?ts=2022&apikey=4af096836a1b7a7c3b2658feeec3ae3a&hash=0725b34b13436807e63352ce699e265f`;
-
   const marvelSeriesAPI = `http://gateway.marvel.com/v1/public/characters/${e}/series?ts=2022&apikey=4af096836a1b7a7c3b2658feeec3ae3a&hash=0725b34b13436807e63352ce699e265f`;
 
   fetch(marvelAPI)
@@ -109,9 +110,11 @@ const eventListenerSearch = (e) => {
 
   fetch(marvelSeriesAPI)
     .then((respuesta) => respuesta.json())
-    .then((data) => renderCharacterSeries(data.data.results))
+    .then((data) => renderCharacterSeries(data.data.results));
+
 };
 
+// -Render Character Information
 const renderCharacterInformation = (character) => {
   containerCharacter.classList.add("container-visibility");
   containerCards.innerHTML = "";
@@ -131,6 +134,7 @@ const renderCharacterInformation = (character) => {
   </div>`;
 };
 
+// -Render Character Comics
 const renderCharacterComics = (character) => {
   comicsTitle.innerHTML += `
   <div class="col-12 principal d-flex justify-content-center">
@@ -148,29 +152,35 @@ const renderCharacterComics = (character) => {
   });
 };
 
+// -Render Character Series
 const renderCharacterSeries = (character) => {
-  seriesTitle.innerHTML +=`
+  seriesTitle.innerHTML += `
   <div class="col-12 principal d-flex justify-content-center">
     <span class="fs-3 principal-title">SERIES</span>
   </div>
   <div class="col-12 division">
-  </div>`
+  </div>`;
 
   character.forEach((serie) => {
     seriesCards.innerHTML += `
     <div class="col-2 cards">
       <img class="cards-image" src="${serie.thumbnail.path}.${serie.thumbnail.extension}" alt="">
       <span class="cards-title">${serie.title}</span>
-    </div>`
-  })
-}
+    </div>`;
+  });
+};
 
-// SEARCH
+
+// ------------------------------------
+
+// SEARCHER
+// -EventListener
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
   search(evt.target.character.value);
 });
 
+// -Event Listener Searcher
 const search = (characterSearch) => {
   const marvelAPI =
     "http://gateway.marvel.com/v1/public/characters?ts=2022&apikey=4af096836a1b7a7c3b2658feeec3ae3a&hash=0725b34b13436807e63352ce699e265f";
