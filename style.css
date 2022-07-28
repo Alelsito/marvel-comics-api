@@ -182,6 +182,11 @@
     height: 275px;
     background-color: black;
     box-shadow: 0 0 15px 0px black;
+    display: none;
+}
+
+.container-visibility {
+    display: inline;
 }
 
 .specific-character-image {
@@ -207,7 +212,7 @@
 
 /* COMICS & SERIES CARDS*/
 
-.containerCards {
+.container-series-comics-cards {
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: auto;
