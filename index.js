@@ -21,33 +21,89 @@ marvelData.render();
 
 // RENDER CARDS
 const renderCards = (characters) => {
-  containerCards.innerHTML = "";
+  // containerCards.innerHTML = "";
   if (characters.size !== 0) {
     characters.forEach((character) => {
-      containerCards.innerHTML += 
-          `<div class="col-2 card mb-3">
-              <div class="title-card">
-                  <span class="title">${character.name}</span>
-              </div>
-              <div class="id-card">
-                  <span class="id">${character.id}</span>
-              </div>
-              <img class="image" src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
-              <div class="image-degradado"></div>
-              <div class="bar">
-                  <div class="emptybar"></div>
-                  <div class="filledbar"></div>
-              </div>
-          </div>`
+      let card = document.createElement("div");
+      let titleCard = document.createElement("div");
+      let title = document.createElement("span");
+      let idCard = document.createElement("div");
+      let id = document.createElement("span");
+      let img = document.createElement("img");
+      let imgDegradado = document.createElement("div");
+      let bar = document.createElement("div");
+      let emptybar = document.createElement("div");
+      let filledbar = document.createElement("div");
+
+      card.classList.add("col-2", "card", "mb-3");
+      card.setAttribute("id", character.id);
+      titleCard.classList.add("title-card");
+      title.classList.add("title");
+      title.innerText = character.name;
+      idCard.classList.add("id-card");
+      id.classList.add("id");
+      id.innerText = character.id;
+      img.classList.add("image");
+      img.setAttribute(
+        "src",
+        `${character.thumbnail.path}.${character.thumbnail.extension}`
+      );
+      img.setAttribute("alt", character.name);
+      imgDegradado.classList.add("image-degradado");
+      bar.classList.add("bar");
+      emptybar.classList.add("emptybar");
+      filledbar.classList.add("filledbar");
+
+      card.appendChild(titleCard);
+      titleCard.appendChild(title);
+      card.appendChild(idCard);
+      idCard.appendChild(id);
+      card.appendChild(img);
+      card.appendChild(imgDegradado);
+      card.appendChild(bar);
+      bar.appendChild(emptybar);
+      bar.appendChild(filledbar);
+      containerCards.appendChild(card);
+
+      // EventListener for each card
+      card.addEventListener("click", (e) => {
+        eventListenerSearch(e.currentTarget.id);
+      });
     });
   } else {
-    containerCards.innerHTML +=`
+    containerCards.innerHTML += `
     <div class="col-8 error">
       <span class="fs-1 d-flex justify-content-center">404</span> <br>
       <span class="fs-4 d-flex justify-content-center">Ooops, character not found</span>
-    </div>`
+    </div>`;
   }
 };
+
+// EVENT LISTENER SEARCH
+
+const eventListenerSearch = (e) => {
+  console.log(e);
+  const marvelComicsAPI =
+    `http://gateway.marvel.com/v1/public/characters/${e}/comics?ts=2022&apikey=4af096836a1b7a7c3b2658feeec3ae3a&hash=0725b34b13436807e63352ce699e265f`;
+
+  const marvelSeriesAPI =
+    `http://gateway.marvel.com/v1/public/characters/${e}/series?ts=2022&apikey=4af096836a1b7a7c3b2658feeec3ae3a&hash=0725b34b13436807e63352ce699e265f`;
+
+  fetch(marvelComicsAPI)
+    .then((respuesta) => respuesta.json())
+    .then((data) => console.log(data))
+
+  fetch(marvelSeriesAPI)
+    .then((respuesta) => respuesta.json())
+    .then((data) => console.log(data))
+
+
+};
+
+const renderCharacerInformation = (character) => {
+  console.log(character)
+  containerCards.innerHTML = "";
+}
 
 // SEARCH
 form.addEventListener("submit", (evt) => {
@@ -83,9 +139,9 @@ const filterByName = (data, characterSearch) => {
 // -Filter by id
 const filterById = (data, characterSearch) => {
   let array = data.data.results;
-  let name = array.filter((character) => {
+  let id = array.filter((character) => {
     let id = String(character.id);
     return id.includes(characterSearch);
   });
-  return name;
+  return id;
 };

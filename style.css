@@ -172,3 +172,87 @@
 .error {
     margin-left: -50px;
 }
+
+/* CHARACTER INFORMATION */
+
+.container-character {
+    position: absolute;
+    margin-top: 30px;
+    width: 100%;
+    height: 275px;
+    background-color: black;
+    box-shadow: 0 0 15px 0px black;
+}
+
+.specific-character-image {
+    width: fit-content;
+    height: 275px;
+}
+
+.column-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.specific-character-title {
+    color: white;
+    font-weight: 500;
+}
+
+.specific-character-description {
+    color: white;
+}
+
+
+/* COMICS & SERIES CARDS*/
+
+.containerCards {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    margin-top: 345px;
+    box-shadow: 0 0 35px 0px black;
+}
+
+.principal {
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+.principal-title {
+    font-weight: 500;
+}
+
+.division {
+    width: 95%;
+    height: 5px;
+    background-color: black;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    margin-left: 35px;
+    box-shadow: 0 0 28px 1px black;
+}
+
+.cards {
+    margin: 0px 15px 15px 15px;
+}
+
+.cards-image {
+    width: 185px;
+    height: 265px;
+    margin-bottom: 9px;
+    box-shadow: 0 0 30px -10px black;
+}
+
+.cards-image:hover {
+    transform: translateY(-10px);
+    transition: 1s ease-out;
+    box-shadow: 0 0 80px -10px black;
+}
+
+.cards-title {
+    font-size: 16px;
+    font-weight: 500;
+}
