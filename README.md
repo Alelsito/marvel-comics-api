@@ -1,4 +1,4 @@
-# Dev.f - Marvel Comics API
+# Dev.f - Marvel Comics API 🦹‍♀️🦹‍♂️🦹‍♀️
 
 This is a solution to the project ✨ Marvel Comics ✨ of the [Kata JavaScript Avanzado](https://www.devf.la/master/encoding/mx).\
 [Dev.f](https://www.devf.la/) offers an innovative solution to educational inclusion with EdTech programs that help people become software developers and obtain technological skills in order to obtain high-quality job opportunities in an agile and accessible way. 
@@ -20,7 +20,7 @@ This is a solution to the project ✨ Marvel Comics ✨ of the [Kata JavaScript 
 
 ### The challenge
 
-1. Create a website where you can consult the characters (by name or id) provided by the Marvel Comics API (20 characters)
+1. Create a website where you can consult the characters (by name or id) provided by the Marvel Comics API (20 characters).
 2. Read information about each caracter that are displayed.
 
 Such as:
@@ -91,3 +91,4 @@ Such as:
 ## Author
 
 - Github - [@Alelsito](https://github.com/Alelsito)
+- LinkdIn - [Hugo Alejandro López Blanco](https://www.linkedin.com/in/hugolopezblanco/)
